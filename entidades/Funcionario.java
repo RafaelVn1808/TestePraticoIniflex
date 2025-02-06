@@ -2,6 +2,7 @@ package entidades;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Funcionario extends Pessoa {
 
@@ -31,5 +32,11 @@ public class Funcionario extends Pessoa {
 
     public void setFuncao(String funcao) {
         this.funcao = funcao;
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return super.toString() + ", Salário: " + String.format("%,.2f", salario).replace('.', ',') + ", Função: " + funcao;
     }
 }

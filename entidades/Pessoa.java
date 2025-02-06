@@ -2,6 +2,7 @@ package entidades;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class Pessoa {
 
@@ -34,5 +35,11 @@ public class Pessoa {
 
     public int getIdade() {
         return Period.between(this.nascimento, LocalDate.now()).getYears();
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return "Nome: " + Nome + ", Data de Nascimento: " + nascimento.format(formatter);
     }
 }
